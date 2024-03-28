@@ -12,3 +12,4 @@ G1 E0.5	;Avance la seringue jusqu’à E =0,5
         ;Si la colle ne sort pas augmenter la valeur de E de +0.5 jusqu’à sortie de la colle puis essuyer.   
 G92 E0	;Défini la position actuelle de E à 0
 G1 Z0.1	;Déplacement de Z à 0.1
+;Vitesse total 6300 mm/mn 
