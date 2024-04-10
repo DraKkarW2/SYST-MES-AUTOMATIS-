@@ -1,49 +1,41 @@
-; Initialisation et positionnement
+; --------------------------------------------------- Initialisation et positionnement ---------------------------------------------------;
 G28  ; Retour à la position d'origine
-
-G1 Z5 ;paramétrage de l'axe Z à 15 mm 
-G1 X235 Y5 
-G92 X0 Y0 Z0
-
-G1 X0 Y5 F4000 ; Déplacement rapide à la position de départ
-G1 Z0 F400 ; Descente à la hauteur d'application de colle
+G1 Z5 ;paramétrage de l'axe Z à 15 mm mais à changer avec la bonne valeur
+G92 X0 Y0 Z0 E0
 G4 P1500 ; Pause pour stabiliser
-
-
-; Premier cordon (bas de la coque) avec coin arrondi en bas à droite
-G1 X-3 F300 ; Mouvement pour nettoyer/essuyer la buse
-G1 X0 Y10 Z0.2 F300 ; Positionnement au début du cordon
+G1 Z10 F200
+G1 X45 Y15 F2000
+T0 ; je n'ai pas tellement compris mais en gros c'est un preset je crois d'après la doc à chercher !!!
+M92 E400 ;Défini les pas de l’axe E à 400 pas/tour de vis
+G1 Z2.1 F200 ;Redescente à Z=0 à 200 mm/mn
+G92 X0 Y0 Z2.1 ;La position actuelle est origine des axes X,Y et Z
+; --------------------------------------------------- cordon n°1 à droite param (e=0.8, h=0.8, Vx=200) --------------------------------------------------- ;
+G1 Z25 F2000 ; élever la buse à Z20 pour le retour après avoir réalisé un premier cordon (essai 0) 
+G1 X4 F2000 ; se repositionner au début de la ligne 
+G1 Y10 Z1.2 F2000; se décaler de l’axe des Y pour réaliser un nouveau cordon et adapter le Z 
+M92 E4000
+G1 X4
+G1 E0.8 X70 F200 ;déplacement avec les paramètre (e=0.8, Vx=200) 
+G4 P1000 ; Pause pour stabiliser
+G3 X70 Y15 I-0.1 J5 E0.8 F200 ; Coin arrondi en bas à droite avec comme param (e=0.8, Vx=200)
+; --------------------------------------------------- cordon n°2 bas du téléphone param (e=0.4, h=0, Vx=200) --------------------------------------------------- ;
 G92 E0 ; Réinitialisation de l'extrudeur
-G1 X-10;
-G1 E4 X-65 F400 ; Déplacement avec encollage le long du bas jusqu'au coin arrondi
-G3 X-70 Y15 I0 J5 E500 F300 ; Coin arrondi en bas à droite
-G1 X-70 Y85 E400 F400 ; Côté droit
-
-; Pause et changement de vitesse pour le coin supérieur droit
-G4 P500 ; Pause courte
-G1 X-70 Y85 E400 F300 ; Ralentissement avant le coin supérieur droit
-G3 X-60 Y110 I-5 J0 E500 F300 ; Coin arrondi en haut à droite
-G1 X-10 Y90 E400 F300 ; Côté supérieur
-
-; Troisième cordon (côté gauche) avec coin arrondi en haut à gauche
-G1 X-10 Y90 E400 F300 ; Approche du coin supérieur gauche
-G3 X0 Y85 I0 J-5 E500 F300 ; Coin arrondi en haut à gauche
-G1 X-05 Y20 E400 F300 ; Côté gauche
-
-; Quatrième cordon et fin de l'encollage avec coin arrondi final en bas à gauche
-G1 X-05 Y15 E400 F300 ; Approche du dernier coin
-G3 X-05 Y0 I5 J0 E500 F300 ; Coin arrondi en bas à gauche pour boucler le contour
-
-
-; Nettoyage final et montée de la tête
-G1 Z10 F1200 ; Remontée de la tête après encollage
-G1 X-3 F300 ; Déplacement pour nettoyer/essuyer la buse
-
-; Signal de fin de travail
-M300 S300 P1000 ; Jouer un son (si pris en charge)
-M117 Travail Termine ; Afficher un message sur l'écran LCD (si pris en charge)
-
-; Fin du programmed
-M104 S0 ; Éteindre la tête d'encollage (si chauffée)
-M140 S0 ; Éteindre le plateau chauffant (si utilisé)
-M84 ; Désactiver les moteurs 
+G1 Z1.2 F2000; se décaler pour adapter le Z 
+M92 E4000
+G1 E0.8 X75 Y30 F200 ;déplacement avec les paramètre (e=0.8, Vx=200)
+G4 P1000 ; Pause pour stabiliser
+G3 X75 Y150 I-5 J-0.1 E500 F300 ; Coin arrondi en haut à droite (e=0.8, Vx=200)
+; --------------------------------------------------- cordon n°3 gauche du téléphone param (e=0.4, h=0, Vx=200) --------------------------------------------------- ;
+G92 E0 ; Réinitialisation de l'extrudeur
+G1 Z1.2 F2000; se décaler pour adapter le Z 
+M92 E4000
+G1 E0.8 X5 Y35 F200 ;déplacement avec les paramètre (e=0.8, Vx=200)
+G4 P1000 ; Pause pour stabiliser
+G3 X-150 Y15 I0 J-5 E0.8 F200 ; Coin arrondi en bas à droite avec comme param (e=0.8, Vx=200)
+; --------------------------------------------------- cordon n°4 gauche du téléphone param (e=0.4, h=0, Vx=200) le last --------------------------------------------------- ;
+G92 E0 ; Réinitialisation de l'extrudeur
+G1 Z1.2 F2000; se décaler pour adapter le Z 
+M92 E4000
+G1 E0.8 X0 Y15 F200 ;déplacement avec les paramètre (e=0.8, Vx=200)
+G4 P1000 ; Pause pour stabiliser
+G3 X0 Y-10 I5 J-0.1 E0.8 F200 ; Coin arrondi en bas à gauche pour boucler le contour (e=0.8, Vx=200)
