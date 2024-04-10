@@ -1,3 +1,41 @@
+<<<<<<< HEAD
+; Initialisation et positionnement
+G28  ; Retour à la position d'origine
+G92 X0 Y0 Z0
+G1 Z5 ;paramétrage de l'axe Z à 15 mm 
+G1 X-50 Y-90 
+G92 X0 Y0 Z0 E0
+G1 Z0.8
+G1 Y10
+G1 X0 
+ 
+G1  X70 F200 E400 F1142
+G1 X100 F800
+G4 P2000 
+
+G92 E0
+
+G1 X0 Y40  
+G1 X70  F200 E800 F2285
+G1 X0 F800
+G4 P2000 
+
+G92 E0
+
+G1 Y80 Z0.2
+G1 X100  F200 E800 F2285
+G1 X100 F800
+G4 P2000 
+
+G92 E0
+
+G1 X0 Y120 Z0.8
+G1 X70 F600 E400 F3428
+G1 X0 F800
+G4 P2000 
+
+
+=======
 G28
 G1 Z10 F200
 G1 X45 Y15 F2000
@@ -110,3 +148,4 @@ G1 E0.8 X70 F600 ;Déplacement avec encollage à X=70 ;Vitesse 200mm/mn
 G1 X140	;Déplacement sans encollage à X=140
 G1 Z10 F300 ;Montée à z=5 pour dégager la pièce Vitesse max 300 mm/mn
 G4 P1000 ;Attente de 1 s pour nettoyer enfin c'est la fin donc on va l'enlever normalement si ont a pas 2 qi je crois ????????????;
+>>>>>>> 54a5618c2c59a914341823365cb49502441b5328
