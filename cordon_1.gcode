@@ -1,4 +1,5 @@
 G28
+G92 E0
 G1 Z10 F200
 G1 X45 Y15 F2000
 T0 ; je n'ai pas tellement compris mais en gros c'est un preset je crois d'après la doc à chercher !!!
