@@ -1,8 +1,8 @@
 G28
 G1 Z10 F200
 G1 X45 Y15 F2000
-T0 ; je n'ai pas telement compris mais en gros c'est un preset je crois d'après la doc à chercher !!!
-M92 E4000 ;Défini les pas de l’axe E à 4000pas/tour de vis
+T0 ; je n'ai pas tellement compris mais en gros c'est un preset je crois d'après la doc à chercher !!!
+M92 E400 ;Défini les pas de l’axe E à 400 pas/tour de vis
 G1 Z2.1 F200 ;Redescente à Z=0 à 200 mm/mn
 G92 X0 Y0 Z2.1 ;La position actuelle est origine des axes X,Y et Z
 	;------------------------------------ Cordon 0 | Purge = non exploitable pour le plan d'exp à changer mais c'est la ligne 0 normalement elle ne compte pas c'est du "calibrage"------------------------------------;
